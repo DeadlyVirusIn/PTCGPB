@@ -18,7 +18,7 @@ CoordMode, Pixel, Screen
 DllCall("AllocConsole")
 WinHide % "ahk_id " DllCall("GetConsoleWindow", "ptr")
 
-global winTitle, changeDate, failSafe, openPack, Delay, failSafeTime, StartSkipTime, Columns, failSafe, scriptName, GPTest, StatusText, defaultLanguage, setSpeed, jsonFileName, pauseToggle, SelectedMonitorIndex, swipeSpeed, godPack, scaleParam, deleteMethod, packs, FriendID, friendIDs, Instances, username, friendCode, stopToggle, friended, runMain, Mains, showStatus, injectMethod, packMethod, loadDir, loadedAccount, nukeAccount, CheckShiningPackOnly, TrainerCheck, FullArtCheck, RainbowCheck, ShinyCheck, dateChange, foundGP, friendsAdded, minStars, PseudoGodPack, Palkia, Dialga, Mew, Pikachu, Charizard, Mewtwo, packArray, CrownCheck, ImmersiveCheck, InvalidCheck, slowMotion, screenShot, accountFile, invalid, starCount, keepAccount, minStarsA1Charizard, minStarsA1Mewtwo, minStarsA1Pikachu, minStarsA1a, minStarsA2Dialga, minStarsA2Palkia, minStarsA2a, minStarsA2b
+global winTitle, changeDate, failSafe, openPack, Delay, failSafeTime, StartSkipTime, Columns, failSafe, scriptName, GPTest, StatusText, defaultLanguage, setSpeed, jsonFileName, pauseToggle, SelectedMonitorIndex, swipeSpeed, godPack, scaleParam, deleteMethod, packs, FriendID, friendIDs, Instances, username, friendCode, stopToggle, friended, runMain, Mains, showStatus, injectMethod, packMethod, loadDir, loadedAccount, nukeAccount, CheckShiningPackOnly, TrainerCheck, FullArtCheck, RainbowCheck, ShinyCheck, dateChange, foundGP, friendsAdded, minStars, PseudoGodPack, Palkia, Dialga, Mew, Pikachu, Charizard, Mewtwo, packArray, CrownCheck, ImmersiveCheck, InvalidCheck, slowMotion, screenShot, accountFile, invalid, starCount, keepAccount, minStarsA1Charizard, minStarsA1Mewtwo, minStarsA1Pikachu, minStarsA1a, minStarsA2Dialga, minStarsA2Palkia, minStarsA2a, minStarsA2b, AccountName
 global DeadCheck
 global s4tEnabled, s4tSilent, s4t3Dmnd, s4t4Dmnd, s4t1Star, s4tGholdengo, s4tWP, s4tWPMinCards, s4tDiscordWebhookURL, s4tDiscordUserId, s4tSendAccountXml
 
@@ -44,6 +44,7 @@ IniRead, swipeSpeed, %A_ScriptDir%\..\Settings.ini, UserSettings, swipeSpeed, 30
 IniRead, deleteMethod, %A_ScriptDir%\..\Settings.ini, UserSettings, deleteMethod, 3 Pack
 IniRead, runMain, %A_ScriptDir%\..\Settings.ini, UserSettings, runMain, 1
 IniRead, Mains, %A_ScriptDir%\..\Settings.ini, UserSettings, Mains, 1
+IniRead, AccountName, %A_ScriptDir%\..\Settings.ini, UserSettings, AccountName, ""
 IniRead, nukeAccount, %A_ScriptDir%\..\Settings.ini, UserSettings, nukeAccount, 0
 IniRead, packMethod, %A_ScriptDir%\..\Settings.ini, UserSettings, packMethod, 0
 IniRead, CheckShiningPackOnly, %A_ScriptDir%\..\Settings.ini, UserSettings, CheckShiningPackOnly, 0
@@ -693,13 +694,15 @@ EraseInput(num := 0, total := 0) {
     failSafeTime := 0
     Loop {
         FindImageAndClick(0, 475, 25, 495, , "OK2", 138, 454)
-        Loop 20 {
+	    adbClick(50, 500)
+		Sleep,10
+	    adbClick(50, 500)
+		Sleep,10
             adbInputEvent("67")
-            Sleep, 10
-        }
         if(FindOrLoseImage(15, 500, 68, 520, , "Erase", 0, failSafeTime))
             break
     }
+
     failSafeTime := (A_TickCount - failSafe) // 1000
     CreateStatusMessage("Waiting for EraseInput`n(" . failSafeTime . "/45 seconds)")
 }
@@ -2316,9 +2319,19 @@ DoTutorial() {
     }
     FindImageAndClick(0, 476, 40, 502, , "OK", 139, 257) ;wait for name input screen
 
-    failSafe := A_TickCount
-    failSafeTime := 0
-    Loop {
+failSafe := A_TickCount
+failSafeTime := 0
+Loop {
+    ; Check for AccountName in Settings.ini
+    IniRead, accountNameValue, %A_ScriptDir%\..\Settings.ini, UserSettings, AccountName, ERROR
+    
+    ; Use AccountName if it exists and isn't empty
+    if (accountNameValue != "ERROR" && accountNameValue != "") {
+        Random, randomNum, 1, 500 ; Generate random number from 1 to 500
+        username := accountNameValue . "-" . randomNum
+        username := SubStr(username, 1, 14)  ; max character limit
+        LogToFile("Using AccountName: " . username)
+    } else {
         fileName := A_ScriptDir . "\..\usernames.txt"
         if(FileExist(fileName))
             name := ReadFile("usernames")
@@ -2327,23 +2340,27 @@ DoTutorial() {
 
         Random, randomIndex, 1, name.MaxIndex()
         username := name[randomIndex]
-        username := SubStr(username, 1, 14)  ;max character limit
-        adbInput(username)
-        Delay(1)
-        if(FindImageAndClick(121, 490, 161, 520, , "Return", 185, 372, , 10)) ;click through until return button on open pack
-            break
-        adbClick(90, 370)
-        Delay(1)
-        adbClick(139, 254) ; 139 254 194 372
-        Delay(1)
-        adbClick(139, 254)
-        Delay(1)
-        EraseInput() ; incase the random pokemon is not accepted
-        failSafeTime := (A_TickCount - failSafe) // 1000
-        CreateStatusMessage("Waiting for Trace`n(" . failSafeTime . "/45 seconds)")
-        if(failSafeTime > 45)
-            restartGameInstance("Stuck at name")
+        username := SubStr(username, 1, 14)  ; max character limit
+        LogToFile("Using random username: " . username)
     }
+    
+    adbInput(username)
+    Delay(1)
+    if(FindImageAndClick(121, 490, 161, 520, , "Return", 185, 372, , 10)) ;click through until return button on open pack
+        break
+    adbClick(90, 370)
+    Delay(1)
+    adbClick(139, 254) ; 139 254 194 372
+    Delay(1)
+    adbClick(139, 254)
+    Delay(1)
+    EraseInput() ; incase the random pokemon is not accepted
+    failSafeTime := (A_TickCount - failSafe) // 1000
+    CreateStatusMessage("In failsafe for Trace. " . failSafeTime "/45 seconds")
+    if(failSafeTime > 45)
+        restartGameInstance("Stuck at name")
+}
+
 
     Delay(1)
 
