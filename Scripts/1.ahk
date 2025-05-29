@@ -28,7 +28,7 @@ global variablePackCount
 global s4tEnabled, s4tSilent, s4t3Dmnd, s4t4Dmnd, s4t1Star, s4tGholdengo, s4tWP, s4tWPMinCards, s4tDiscordWebhookURL, s4tDiscordUserId, s4tSendAccountXml
 global avgtotalSeconds
 global verboseLogging := false  ; Set to true only for debugging
-global showcaseURL, showcaseEnabled
+global showcaseEnabled
 
 ; ===== NEW GLOBAL VARIABLES FOR ENHANCED INJECTION SYSTEM =====
 global injectSortMethod := "ModifiedAsc"  ; Default sort method (oldest accounts first)
@@ -118,7 +118,6 @@ IniRead, ocrLanguage, %A_ScriptDir%\..\Settings.ini, UserSettings, ocrLanguage, 
 IniRead, variablePackCount, %A_ScriptDir%\..\Settings.ini, UserSettings, variablePackCount, 15
 IniRead, injectSortMethod, %A_ScriptDir%\..\Settings.ini, UserSettings, injectSortMethod, ModifiedAsc
 IniRead, injectVariable, %A_ScriptDir%\..\Settings.ini, UserSettings, variablePackCount, 15
-IniRead, showcaseURL, %A_ScriptDir%\..\Settings.ini, UserSettings, showcaseURL
 IniRead, injectMaxValue, %A_ScriptDir%\..\Settings.ini, UserSettings, injectMaxValue, 39
 IniRead, injectMinValue, %A_ScriptDir%\..\Settings.ini, UserSettings, injectMinValue, 35
 IniRead, waitForEligibleAccounts, %A_ScriptDir%\..\Settings.ini, UserSettings, waitForEligibleAccounts, 1
