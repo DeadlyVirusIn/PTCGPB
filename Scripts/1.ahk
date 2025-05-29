@@ -1187,7 +1187,7 @@ showcaseLikes() {
 	Delay(10)
 	adbClick(80, 400)								; Clicking showcase button
 	Delay(10)
-	Loop, Read, % showcaseURL
+	Loop, Read, %A_ScriptDir%\..\showcase_ids.txt
 		{
 			showcaseID := Trim(A_LoopReadLine)        
 			adbClick(220, 467)						; Clicking friend ID search
