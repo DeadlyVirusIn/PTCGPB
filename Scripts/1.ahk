@@ -1310,7 +1310,7 @@ FindOrLoseImage(X1, Y1, X2, Y2, searchVariation := "", imageName := "DEFAULT", E
     if (vRet = 1) {
         restartGameInstance("Stuck at " . imageName . "...")
     }
-    if(imageName = "Social" || imageName = "Add" || imageName = "Search" || imageName = "Friend" || "imageName = "OK2") {
+    if(imageName = "Social" || imageName = "Add" || imageName = "Search" || imageName = "Friend" || imageName = "OK2") {
         TradeTutorial()
     }
     if(imageName = "Social" || imageName = "Country" || imageName = "Account2" || imageName = "Account" || imageName = "Points") { ;only look for deleted account on start up.
