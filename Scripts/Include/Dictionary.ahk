@@ -1,0 +1,913 @@
+﻿CreateGUITextByLanguage(Language, localVersion) {
+    Lang := Object()
+    if (Language = 1) {
+        ;; English GUI Text
+        Lang["fail_fetch"] := "Failed to fetch release info." ; checkForUpdate
+        Lang["fail_url"] := "Failed to find the ZIP download URL in the release."
+        Lang["fail_version"] := "Failed to retrieve version info."
+        Lang["update_title"] := "Update Available"
+        Lang["confirm_dl"] := "Do you want to download the latest version?"
+        Lang["downloading"] := "Downloading the latest version..."
+        Lang["dl_failed"] := "Failed to download update."
+        Lang["dl_complete"] := "Download complete. Extracting..."
+        Lang["extract_failed"] := "Failed to extract the update."
+        Lang["installed"] := "Update installed. Restarting..."
+        Lang["missing_files"] := "Failed to find the extracted contents."
+        Lang["cancel"] := "The update was canceled."
+        Lang["up_to_date"] := "You are running the latest version (" . localVersion . ")."
+
+        Lang["title_set"] := "You can modify settings here." ; SettingPage
+        Lang["btn_reroll"] := "Reroll Settings"
+        Lang["btn_system"] := "System Settings"
+        Lang["btn_pack"] := "Pack Settings"
+        Lang["btn_save"] := "Save for Trade"
+        Lang["btn_discord"] := "Discord Settings"
+        Lang["btn_download"] := "Download Settings"
+        Lang["btn_main"] := "Main Page"
+
+        Lang["title_main"] := "Arturo's PTCGP BOT" ; MainPage
+        Lang["btn_arrange"] := "Arrange Windows"
+        Lang["btn_coffee"] := "Buy Me a Coffee"
+        Lang["btn_join"] := "Join Discord"
+        Lang["btn_mumu"] := "Launch all Mumu"
+        Lang["btn_balance"] := "Balance XMLs"
+        Lang["btn_start"] := "Start Bot"
+        Lang["btn_update"] := "Check for Update"
+        Lang["btn_setting"] := "Settings Page"
+        Lang["btn_return"] := "↩️ Return"
+
+        Lang["btn_ToolTip"] := "ToolTip"
+        Lang["btn_Language"] := "Language"
+        Lang["languageNotice"] := "PTCGPB.ahk needs to reload in order to switch the language. "
+        Lang["languageNotice"] .= "Click 'Yes' to reload, or 'No' to return to the settings."
+        Lang["btn_reload"] := "Reload"
+        Lang["btn_bg_Off"] := "Background Off"
+        Lang["btn_bg_On"] := "Background On"
+        Lang["btn_theme_Dark"] := "Dark"
+        Lang["btn_theme_Light"] := "Light"
+
+        Lang["FriendIDLabel"] := "Your Friend ID"
+        Lang["Txt_Instances"] := "Instances:"
+        Lang["Txt_InstanceStartDelay"] := "Start Delay:"
+        Lang["Txt_Columns"] := "Columns:"
+        Lang["Txt_runMain"] := "Run Mains"
+        Lang["Txt_AccountName"] := "Account Name:"
+        Lang["Txt_Delay"] := "Delay:"
+        Lang["Txt_WaitTime"] := "Wait Time:"
+        Lang["Txt_SwipeSpeed"] := "Swipe Speed:"
+        Lang["Txt_slowMotion"] := "Base Game Compatibility"
+
+        Lang["Txt_Monitor"] := "Monitor:"
+        Lang["Txt_Scale"] := "Scale:"
+        Lang["Txt_RowGap"] := "Row Gap:"
+        Lang["Txt_FolderPath"] := "Folder Path:"
+        Lang["Txt_OcrLanguage"] := "OCR:"
+        Lang["Txt_ClientLanguage"] := "Client"
+        Lang["Txt_InstanceLaunchDelay"] := "Launch MUMU Delay:"
+        Lang["Txt_autoLaunchMonitor"] := "Auto open Monitor"
+        Lang["ExtraSettingsHeading"] := "Extra Settings"
+        Lang["Txt_applyRoleFilters"] := "Use Role-Based Filters"
+        Lang["Txt_debugMode"] := "Debug Mode"
+        Lang["Txt_tesseractOption"] := "Use Tesseract"
+        Lang["Txt_statusMessage"] := "Status Messages"
+        Lang["Txt_TesseractPath"] := "Tesseract Path:"
+
+        Lang["Txt_MinStars"] := "Min. 2 ★:"
+        Lang["Txt_ShinyMinStars"] := "2 ★ for Shiny Packs:"
+        Lang["Txt_DeleteMethod"] := "Method:"
+        Lang["Txt_InjectMaxValue"] := "Max:"
+        Lang["Txt_InjectMinValue"] := "Min:"
+        Lang["Txt_InjectRange"] := "Range:"
+        Lang["Txt_packMethod"] := "1 Pack Method"
+        Lang["Txt_nukeAccount"] := "Menu Delete"
+        Lang["Txt_spendHourGlass"] := "Spend Hour Glass"
+        Lang["Txt_claimSpecialMissions"] := "Claim Special Missions"
+        Lang["SortByText"] := "Sort By:"
+
+        Lang["Txt_Buzzwole"] := "Buzzwole"
+        Lang["Txt_Solgaleo"] := "Solgaleo"
+        Lang["Txt_Lunala"] := "Lunala"
+        Lang["Txt_Shining"] := "Shining"
+        Lang["Txt_Arceus"] := "Arceus"
+        Lang["Txt_Palkia"] := "Palkia"
+        Lang["Txt_Dialga"] := "Dialga"
+        Lang["Txt_Pikachu"] := "Pikachu"
+        Lang["Txt_Charizard"] := "Charizard"
+        Lang["Txt_Mewtwo"] := "Mewtwo"
+        Lang["Txt_Mew"] := "Mew"
+        Lang["AllPack"] := "🔎Show all packs"
+        Lang["PackHeading"] := "Pack Selection"
+
+        Lang["Txt_FullArtCheck"] := "Single Full Art"
+        Lang["Txt_TrainerCheck"] := "Single Trainer"
+        Lang["Txt_RainbowCheck"] := "Single Rainbow"
+        Lang["Txt_PseudoGodPack"] := "Double 2 ★"
+        Lang["Txt_CheckShiningPackOnly"] := "Only Shining Boost"
+        Lang["Txt_CrownCheck"] := "Save Crowns"
+        Lang["Txt_ShinyCheck"] := "Save Shiny"
+        Lang["Txt_ImmersiveCheck"] := "Save Immersives"
+        Lang["Txt_InvalidCheck"] := "Ignore Invalid Packs"
+
+        Lang["Txt_s4tEnabled"] := "Enable Save for Trade"
+        Lang["Txt_s4tSilent"] := "Silent (No Ping)"
+        Lang["Txt_s4tWP"] := "Wonder Pick"
+        Lang["Txt_s4tWPMinCards"] := "Min. Cards:"
+        Lang["S4TDiscordSettingsSubHeading"] := "S4T Discord Settings"
+        Lang["Txt_s4tSendAccountXml"] := "Send Account XML"
+
+        Lang["DiscordSettingsHeading"] := "Discord Settings"
+        Lang["Txt_sendAccountXml"] := "Send Account XML"
+        Lang["HeartbeatSettingsSubHeading"] := "Heartbeat settings"
+        Lang["Txt_heartBeat"] := "Discord Heartbeat"
+        Lang["hbName"] := "Name:"
+        Lang["hbDelay"] := "Heartbeat Delay (min):"
+
+        Lang["Txt_showcaseEnabled"] := "Use Showcase from showcase_ids.txt"
+    } else if (Language = 2) {
+        ;; 中文 GUI Text
+        Lang["fail_fetch"] := "無法取得發行資訊。" ; checkForUpdate
+        Lang["fail_url"] := "無法在發行資訊中找到 ZIP 下載連結。"
+        Lang["fail_version"] := "無法取得版本資訊。"
+        Lang["update_title"] := "有新版本可用"
+        Lang["confirm_dl"] := "你想要下載最新版本嗎？"
+        Lang["downloading"] := "正在下載最新版本……"
+        Lang["dl_failed"] := "下載更新失敗。"
+        Lang["dl_complete"] := "下載完成，正在解壓縮……"
+        Lang["extract_failed"] := "解壓縮更新失敗。"
+        Lang["installed"] := "更新安裝完成，正在重新啟動……"
+        Lang["missing_files"] := "找不到解壓縮後的內容。"
+        Lang["cancel"] := "已取消更新。"
+        Lang["up_to_date"] := "你已使用最新版本 (" . localVersion . ")。"
+
+        Lang["title_set"] := "在這裡選擇你要修改的設定。" ; SettingPage
+        Lang["btn_reroll"] := "刷包設定"
+        Lang["btn_system"] := "系統設定"
+        Lang["btn_pack"] := "卡包設定"
+        Lang["btn_save"] := "交換設定"
+        Lang["btn_discord"] := "Discord 設定"
+        Lang["btn_download"] := "下載設定"
+        Lang["btn_main"] := "🏠︎ 主畫面"
+
+        Lang["title_main"] := "Arturo's PTCGP Bot" ; MainPage
+        Lang["btn_arrange"] := "排列視窗"
+        Lang["btn_coffee"] := "給作者一杯咖啡"
+        Lang["btn_join"] := "加入Reroll群"
+        Lang["btn_mumu"] := "啟動MUMU模擬器"
+        Lang["btn_balance"] := "均分XML檔案"
+        Lang["btn_start"] := "開始運行"
+        Lang["btn_update"] := "檢查更新"
+        Lang["btn_setting"] := "⚙️ 設定頁面"
+        Lang["btn_return"] := "↩️ 返回"
+
+        Lang["btn_ToolTip"] := "使用說明"
+        Lang["btn_Language"] := "語言"
+        Lang["languageNotice"] := "切換選言需重啟腳本，是否重啟?"
+        Lang["btn_reload"] := "重啟"
+        Lang["btn_bg_Off"] := "背景關閉"
+        Lang["btn_bg_On"] := "背景開啟"
+        Lang["btn_theme_Dark"] := "深色"
+        Lang["btn_theme_Light"] := "淺色"
+
+        Lang["FriendIDLabel"] := "你的遊戲ID"
+        Lang["Txt_Instances"] := "模擬器數量："
+        Lang["Txt_InstanceStartDelay"] := "啟動延遲："
+        Lang["Txt_Columns"] := "排列數："
+        Lang["Txt_runMain"] := "運行主帳"
+        Lang["Txt_AccountName"] := "帳號名稱："
+        Lang["Txt_Delay"] := "指令延遲："
+        Lang["Txt_WaitTime"] := "等待同意："
+        Lang["Txt_SwipeSpeed"] := "劃包速度："
+        Lang["Txt_slowMotion"] := "兼容原版速度"
+
+        Lang["Txt_Monitor"] := "顯示器："
+        Lang["Txt_Scale"] := "縮放比例："
+        Lang["Txt_RowGap"] := "列間距："
+        Lang["Txt_FolderPath"] := "資料夾路徑："
+        Lang["Txt_OcrLanguage"] := "OCR 語言："
+        Lang["Txt_ClientLanguage"] := "遊戲語言"
+        Lang["Txt_InstanceLaunchDelay"] := "開啟模擬器延遲："
+        Lang["Txt_autoLaunchMonitor"] := "自動啟用監視器"
+        Lang["ExtraSettingsHeading"] := "進階設定"
+        Lang["Txt_applyRoleFilters"] := "使用角色篩選器"
+        Lang["Txt_debugMode"] := "除錯模式"
+        Lang["Txt_tesseractOption"] := "啟用 Tesseract"
+        Lang["Txt_statusMessage"] := "顯示狀態訊息"
+        Lang["Txt_TesseractPath"] := "Tesseract 路徑："
+
+        Lang["Txt_MinStars"] := "最小 2 ★："
+        Lang["Txt_ShinyMinStars"] := "閃光最小  2 ★："
+        Lang["Txt_DeleteMethod"] := "刷包法："
+        Lang["Txt_InjectMaxValue"] := "上限："
+        Lang["Txt_InjectMinValue"] := "下限："
+        Lang["Txt_InjectRange"] := "範圍："
+        Lang["Txt_packMethod"] := "單包模式"
+        Lang["Txt_nukeAccount"] := "清單刪除"
+        Lang["Txt_spendHourGlass"] := "使用沙漏"
+        Lang["Txt_claimSpecialMissions"] := "領取特殊任務"
+        Lang["SortByText"] := "注入排序："
+
+        Lang["Txt_Buzzwole"] := "爆肌蚊"
+        Lang["Txt_Solgaleo"] := "索爾迦雷歐"
+        Lang["Txt_Lunala"] := "露奈雅拉"
+        Lang["Txt_Shining"] := "嗨放異彩"
+        Lang["Txt_Arceus"] := "阿爾宙斯"
+        Lang["Txt_Palkia"] := "帕路奇亞"
+        Lang["Txt_Dialga"] := "帝牙盧卡"
+        Lang["Txt_Pikachu"] := "皮卡丘"
+        Lang["Txt_Charizard"] := "噴火龍"
+        Lang["Txt_Mewtwo"] := "超夢"
+        Lang["Txt_Mew"] := "夢幻"
+        Lang["AllPack"] := "🔎查看所有卡包"
+        Lang["PackHeading"] := "卡包選擇"
+
+        Lang["Txt_FullArtCheck"] := "單張全圖"
+        Lang["Txt_TrainerCheck"] := "單張人物"
+        Lang["Txt_RainbowCheck"] := "單張彩圖"
+        Lang["Txt_PseudoGodPack"] := "雙 2 ★"
+        Lang["Txt_CheckShiningPackOnly"] := "只檢查閃光"
+        Lang["Txt_CrownCheck"] := "保留皇冠"
+        Lang["Txt_ShinyCheck"] := "保留閃光"
+        Lang["Txt_ImmersiveCheck"] := "保留實境"
+        Lang["Txt_InvalidCheck"] := "忽略無效包"
+
+        Lang["Txt_s4tEnabled"] := "啟用保存交換"
+        Lang["Txt_s4tSilent"] := "靜音（不通知）"
+        Lang["Txt_s4tWP"] := "得卡挑戰"
+        Lang["Txt_s4tWPMinCards"] := "最少卡數："
+        Lang["S4TDiscordSettingsSubHeading"] := "S4T Discord 設定"
+        Lang["Txt_s4tSendAccountXml"] := "傳送帳號 XML"
+        Lang["DiscordSettingsHeading"] := "Discord 設定"
+        Lang["Txt_sendAccountXml"] := "傳送帳號 XML"
+
+        Lang["HeartbeatSettingsSubHeading"] := "心跳設定"
+        Lang["Txt_heartBeat"] := "Discord 心跳"
+        Lang["hbName"] := "名稱："
+        Lang["hbDelay"] := "間隔時間（分鐘）:"
+
+        Lang["Txt_showcaseEnabled"] := "使用 showcase_ids.txt"
+    } else if (Language = 3) {
+        ;; 日本語 GUI Text
+        Lang["fail_fetch"] := "新しいリリース情報が見つかりませんでした。" ; checkForUpdate
+        Lang["fail_url"] := "リリース情報にZIPダウンロードURLが見つかりません。"
+        Lang["fail_version"] := "バージョン情報の取得に失敗しました。"
+        Lang["update_title"] := "アップデートがあります"
+        Lang["confirm_dl"] := "最新バージョンをダウンロードしますか？"
+        Lang["downloading"] := "最新バージョンをダウンロード中…"
+        Lang["dl_failed"] := "アップデートのダウンロードに失敗しました。"
+        Lang["dl_complete"] := "ダウンロード完了。解凍中…"
+        Lang["extract_failed"] := "アップデートの解凍に失敗しました。"
+        Lang["installed"] := "アップデートが完了しました。再起動中…"
+        Lang["missing_files"] := "解凍された内容が見つかりません。"
+        Lang["cancel"] := "アップデートはキャンセルされました。"
+        Lang["up_to_date"] := "ご利用のバージョン（" . localVersion . "）は最新です。"
+
+        Lang["title_set"] := "ここで設定を変更できます。" ; SettingPage
+        Lang["btn_reroll"] := "リセマラ設定"
+        Lang["btn_system"] := "システム設定"
+        Lang["btn_pack"] := "パック設定"
+        Lang["btn_save"] := "交換用に保存"
+        Lang["btn_discord"] := "Discord 設定"
+        Lang["btn_download"] := "ダウンロード設定"
+        Lang["btn_main"] := "🏠︎ メインページ"
+
+        Lang["title_main"] := "Arturo の PTCGP ボット" ; MainPage
+        Lang["btn_arrange"] := "ウィンドウを整列"
+        Lang["btn_coffee"] := "コーヒーを支援"
+        Lang["btn_join"] := "Discordに参加"
+        Lang["btn_mumu"] := "全てのエミュレータを起動"
+        Lang["btn_balance"] := "XMLを均等に分ける"
+        Lang["btn_start"] := "ボットを起動"
+        Lang["btn_update"] := "更新を確認"
+        Lang["btn_setting"] := "⚙️ 設定ページ"
+        Lang["btn_return"] := "↩️ 戻る"
+
+        Lang["btn_ToolTip"] := "ヒント"
+        Lang["btn_Language"] := "言語"
+        Lang["languageNotice"] := "言語切り替えると再起動が必要です。再起動しますか？"
+        Lang["btn_reload"] := "リロード"
+        Lang["btn_bg_Off"] := "背景オフ"
+        Lang["btn_bg_On"] := "背景オン"
+        Lang["btn_theme_Dark"] := "ダークモード"
+        Lang["btn_theme_Light"] := "ライトモード"
+
+        Lang["FriendIDLabel"] := "メインアカウントID"
+        Lang["Txt_Instances"] := "エミュレータ数："
+        Lang["Txt_InstanceStartDelay"] := "起動遅延："
+        Lang["Txt_Columns"] := "列数："
+        Lang["Txt_runMain"] := "メインアカウント起動"
+        Lang["Txt_AccountName"] := "アカウント名稱："
+        Lang["Txt_Delay"] := "遅延："
+        Lang["Txt_WaitTime"] := "待機時間："
+        Lang["Txt_SwipeSpeed"] := "スワイプ速度："
+        Lang["Txt_slowMotion"] := "互換モード"
+
+        Lang["Txt_Monitor"] := "モニター："
+        Lang["Txt_Scale"] := "スケール："
+        Lang["Txt_RowGap"] := "行間隔："
+        Lang["Txt_FolderPath"] := "フォルダパス："
+        Lang["Txt_OcrLanguage"] := "OCR言語："
+        Lang["Txt_ClientLanguage"] := "クライアント"
+        Lang["Txt_InstanceLaunchDelay"] := "エミュレータ起動遅延:"
+        Lang["Txt_autoLaunchMonitor"] := "モニター自動起動"
+        Lang["ExtraSettingsHeading"] := "追加設定"
+        Lang["Txt_applyRoleFilters"] := "ロール別フィルター使用"
+        Lang["Txt_debugMode"] := "デバッグモード"
+        Lang["Txt_tesseractOption"] := "Tesseract使用"
+        Lang["Txt_statusMessage"] := "ステータスメッセージ"
+        Lang["Txt_TesseractPath"] := "Tesseractパス:"
+
+        Lang["Txt_MinStars"] := "最小 2 ★："
+        Lang["Txt_ShinyMinStars"] := "色違い最小  2 ★："
+        Lang["Txt_DeleteMethod"] := "注入法："
+        Lang["Txt_InjectMaxValue"] := "上限："
+        Lang["Txt_InjectMinValue"] := "下限："
+        Lang["Txt_InjectRange"] := "範圍："
+        Lang["Txt_packMethod"] := "シングルパックモード"
+        Lang["Txt_nukeAccount"] := "リスト削除"
+        Lang["Txt_spendHourGlass"] := "砂時計使用"
+        Lang["Txt_claimSpecialMissions"] := "イベント"
+        Lang["SortByText"] := "注入序列："
+
+        Lang["Txt_Buzzwole"] := "マッシブーン"
+        Lang["Txt_Solgaleo"] := "ソルガレオ"
+        Lang["Txt_Lunala"] := "ルナアーラ"
+        Lang["Txt_Shining"] := "シャイニングハイ"
+        Lang["Txt_Arceus"] := "アルセウス"
+        Lang["Txt_Palkia"] := "パルキア"
+        Lang["Txt_Dialga"] := "ディアルガ"
+        Lang["Txt_Pikachu"] := "ピカチュウ"
+        Lang["Txt_Charizard"] := "リザードン"
+        Lang["Txt_Mewtwo"] := "ミュウツー"
+        Lang["Txt_Mew"] := "ミュウ"
+        Lang["AllPack"] := "🔎パックを表示"
+        Lang["PackHeading"] := "パックを選択"
+
+        Lang["Txt_FullArtCheck"] := "単枚フルアート"
+        Lang["Txt_TrainerCheck"] := "単枚トレーナー"
+        Lang["Txt_RainbowCheck"] := "単枚レインボー"
+        Lang["Txt_PseudoGodPack"] := "2枚2★"
+        Lang["Txt_CheckShiningPackOnly"] := "色違いのみ"
+        Lang["Txt_CrownCheck"] := "クラウン保存"
+        Lang["Txt_ShinyCheck"] := "色違い保存"
+        Lang["Txt_ImmersiveCheck"] := "演出型保存"
+        Lang["Txt_InvalidCheck"] := "無効パック無視"
+
+        Lang["Txt_s4tEnabled"] := "交換保存を有効化"
+        Lang["Txt_s4tSilent"] := "通知なし（サイレント）"
+        Lang["Txt_s4tWP"] := "ゲットチャレンジ"
+        Lang["Txt_s4tWPMinCards"] := "最小枚数："
+        Lang["S4TDiscordSettingsSubHeading"] := "S4T Discord 設定"
+        Lang["Txt_s4tSendAccountXml"] := "アカウント XML 送信"
+        Lang["DiscordSettingsHeading"] := "Discord 設定"
+        Lang["Txt_sendAccountXml"] := "アカウント XML 送信"
+
+        Lang["HeartbeatSettingsSubHeading"] := "ハートビート設定"
+        Lang["Txt_heartBeat"] := "Discord ハートビート"
+        Lang["hbName"] := "名稱："
+        Lang["hbDelay"] := "ハートビート間隔（分）："
+
+        Lang["Txt_showcaseEnabled"] := "showcase_ids.txt を使用"
+    } else if (Language = 4) {
+        ;; Deutsch GUI Text
+        Lang["fail_fetch"] := "Abrufen der Versionsinformationen fehlgeschlagen." ; checkForUpdate
+        Lang["fail_url"] := "Die ZIP-Download-URL konnte in dieser Version nicht gefunden werden."
+        Lang["fail_version"] := "Versionsinformationen konnten nicht abgerufen werden."
+        Lang["update_title"] := "Update verfügbar"
+        Lang["confirm_dl"] := "Möchtest du die neueste Version herunterladen?"
+        Lang["downloading"] := "Neueste Version wird heruntergeladen..."
+        Lang["dl_failed"] := "Update konnte nicht heruntergeladen werden."
+        Lang["dl_complete"] := "Download abgeschlossen. Entpacken..."
+        Lang["extract_failed"] := "Update konnte nicht entpackt werden."
+        Lang["installed"] := "Update installiert. Neustart..."
+        Lang["missing_files"] := "Extrahierte Inhalte konnten nicht gefunden werden."
+        Lang["cancel"] := "Das Update wurde abgebrochen."
+        Lang["up_to_date"] := "Du verwendest die neueste Version (" . localVersion . ")."
+
+        Lang["title_set"] := "Hier kannst du die Einstellungen ändern"
+        Lang["btn_reroll"] := "Reroll Einstellungen"
+        Lang["btn_system"] := "Systemeinstellungen"
+        Lang["btn_pack"] := "Pack Einstellungen"
+        Lang["btn_save"] := "Für Tausch speichern"
+        Lang["btn_discord"] := "Discord Einstellungen"
+        Lang["btn_download"] := "Download Einstellungen"
+        Lang["btn_main"] := "Startseite"
+
+        Lang["title_main"] := "Arturo's PTCGP BOT"
+        Lang["btn_arrange"] := "Fenster anordnen"
+        Lang["btn_coffee"] := "Spendiere mir einen Kaffee"
+        Lang["btn_join"] := "Discord beitreten"
+        Lang["btn_mumu"] := "Alle Instanzen starten"
+        Lang["btn_balance"] := "XMLs ausgleichen"
+        Lang["btn_start"] := "Bot starten"
+        Lang["btn_update"] := "Auf Updates überprüfen"
+        Lang["btn_setting"] := "Einstellungen"
+        Lang["btn_return"] := "↩️ Zurück"
+        Lang["PackHeading"] := "Pack Selection"
+
+        Lang["btn_ToolTip"] := "QuickInfo"
+        Lang["btn_Language"] := "Sprache"
+        Lang["languageNotice"] := "PTCGPB.ahk muss neu geladen werden, um die Sprache zu wechseln. "
+        Lang["languageNotice"] .= "Klicke auf ‚Ja‘ zum Neuladen oder auf ‚Nein‘, "
+        Lang["languageNotice"] .= "um zu den Einstellungen zurückzukehren."
+        Lang["btn_reload"] := "Neu laden"
+        Lang["btn_bg_Off"] := "Hintergrund aus"
+        Lang["btn_bg_On"] := "Hintergrund an"
+        Lang["btn_theme_Dark"] := "Dunkel"
+        Lang["btn_theme_Light"] := "Hell"
+
+        Lang["FriendIDLabel"] := "Deine Freundes-ID"
+        Lang["Txt_Instances"] := "Instanzen:"
+        Lang["Txt_InstanceStartDelay"] := "Startverzögerung:"
+        Lang["Txt_Columns"] := "Spalten:"
+        Lang["Txt_runMain"] := "Main Account laufen:"
+        Lang["Txt_AccountName"] := "Kontoname:"
+        Lang["Txt_Delay"] := "Verzögerung:"
+        Lang["Txt_WaitTime"] := "Wartezeit:"
+        Lang["Txt_SwipeSpeed"] := "Wischgeschwindigkeit:"
+        Lang["Txt_slowMotion"] := "Kompatibilität mit Basisspiel"
+
+        Lang["Txt_Monitor"] := "Überwachen:"
+        Lang["Txt_Scale"] := "Skalierung:"
+        Lang["Txt_RowGap"] := "Abstand zw. Instanzen:"
+        Lang["Txt_FolderPath"] := "Ordnerpfad:"
+        Lang["Txt_OcrLanguage"] := "OCR:"
+        Lang["Txt_ClientLanguage"] := "Klient"
+        Lang["Txt_InstanceLaunchDelay"] := "MUMU-Startverzögerung:"
+        Lang["Txt_autoLaunchMonitor"] := "Überwachung automatisch starten"
+        Lang["ExtraSettingsHeading"] := "Weitere Einstellungen"
+        Lang["Txt_applyRoleFilters"] := "Rollenbasierte Filter verwenden"
+        Lang["Txt_debugMode"] := "Debug-Modus"
+        Lang["Txt_tesseractOption"] := "Tesseract nutzen"
+        Lang["Txt_statusMessage"] := "Statusnachrichten"
+        Lang["Txt_TesseractPath"] := "Tesseract Pfad:"
+
+        Lang["Txt_MinStars"] := "Min. 2 ★:"
+        Lang["Txt_ShinyMinStars"] := "2 ★ für Schillernde Packs:"
+        Lang["Txt_DeleteMethod"] := "Methode:"
+        Lang["Txt_InjectMaxValue"] := "Max:"
+        Lang["Txt_InjectMinValue"] := "Min:"
+        Lang["Txt_InjectRange"] := "Bereich:"
+        Lang["Txt_packMethod"] := "1 Pack Methode"
+        Lang["Txt_nukeAccount"] := "Account löschen"
+        Lang["Txt_spendHourGlass"] := "Sanduhren verwenden"
+        Lang["Txt_claimSpecialMissions"] := "Spezialmissionen"
+        Lang["SortByText"] := "Sortieren nach:"
+
+        Lang["Txt_Buzzwole"] := "Masskito"
+        Lang["Txt_Solgaleo"] := "Solgaleo"
+        Lang["Txt_Lunala"] := "Lunala"
+        Lang["Txt_Shining"] := "Schillernd"
+        Lang["Txt_Arceus"] := "Arceus"
+        Lang["Txt_Palkia"] := "Palkia"
+        Lang["Txt_Dialga"] := "Dialga"
+        Lang["Txt_Pikachu"] := "Pikachu"
+        Lang["Txt_Charizard"] := "Glurak"
+        Lang["Txt_Mewtwo"] := "Mewtwo"
+        Lang["Txt_Mew"] := "Mew"
+        Lang["AllPack"] := "🔎Zeige alle Packs"
+        Lang["PackHeading"] := "Pack-Auswahl"
+
+        Lang["Txt_FullArtCheck"] := "Einzelne Full Art"
+        Lang["Txt_TrainerCheck"] := "Einzelne Trainer"
+        Lang["Txt_RainbowCheck"] := "Einzelne Regenbogen"
+        Lang["Txt_PseudoGodPack"] := "Doppelte 2 ★"
+        Lang["Txt_CheckShiningPackOnly"] := "Nur schillernde Booster"
+        Lang["Txt_CrownCheck"] := "Kronen speichern"
+        Lang["Txt_ShinyCheck"] := "Schillernde speichern"
+        Lang["Txt_ImmersiveCheck"] := "Immersive speichern"
+        Lang["Txt_InvalidCheck"] := "Ignoriere ungültige Packs"
+        Lang["Txt_s4tEnabled"] := "Für Tausch speichern aktivieren"
+        Lang["Txt_s4tSilent"] := "Still (Kein Ping)"
+        Lang["Txt_s4tWP"] := "Wunderwahl"
+        Lang["Txt_s4tWPMinCards"] := "Min. Karten:"
+        Lang["S4TDiscordSettingsSubHeading"] := "S4T Discord Einstellungen"
+        Lang["Txt_s4tSendAccountXml"] := "Account XML senden"
+        Lang["DiscordSettingsHeading"] := "Discord Einstellungen"
+        Lang["Txt_sendAccountXml"] := "Account XML senden"
+        Lang["HeartbeatSettingsSubHeading"] := "Herzschlag Einstellungen"
+        Lang["Txt_heartBeat"] := "Discord Herzschlag"
+        Lang["hbName"] := "Name:"
+        Lang["hbDelay"] := "Herzschlag Verzögerung (min):"
+        Lang["Txt_showcaseEnabled"] := "Showcase aus showcase_ids.txt verwenden"
+    }
+    return Lang
+}
+
+CreateLicenseNoteLanguage(Language) {
+    LicenseLang := Object()
+    if (Language = 1) {
+        LicenseLang["Title"] := "The project is now licensed under CC BY-NC 4.0"
+        LicenseLang["Content"] := "The original intention of this project was not for it "
+        LicenseLang["Content"] .= "to be used for paid services even those disguised as 'donations.' "
+        LicenseLang["Content"] .= "I hope people respect my wishes and those of the community."
+        LicenseLang["Content"] .= "`nThe project is now licensed under CC BY-NC 4.0, which allows you to use, modify, "
+        LicenseLang["Content"] .= "and share the software only for non-commercial purposes. Commercial use, "
+        LicenseLang["Content"] .= "including using the software to provide paid services "
+        LicenseLang["Content"] .= "or selling it (even if donations are involved), is not allowed under this license. "
+        LicenseLang["Content"] .= "The new license applies to this and all future releases."
+    } else if (Language = 2) {
+        LicenseLang["Title"] := "本專案現已採用 CC BY-NC 4.0 授權"
+        LicenseLang["Content"] := "本專案的初衷並非用於任何形式的付費服務，即使這些服務以「斗內」的名義包裝也不例外。"
+        LicenseLang["Content"] .= "我希望大家能尊重我與社群的意願。 本授權允許您在非商業用途下使用、修改與分享本軟體。 "
+        LicenseLang["Content"] .= "任何商業用途（包括使用本軟體提供付費服務或銷售，即使是透過斗內方式），在此授權條款下皆不被允許。 "
+        LicenseLang["Content"] .= "新授權條款適用於本版本以及所有未來版本。"
+    } else if (Language = 3) {
+        LicenseLang["Title"] := "このプロジェクトは現在、CC BY-NC 4.0 ライセンスの下で提供されています"
+        LicenseLang["Content"] := "本プロジェクトの本来の意図は、"
+        LicenseLang["Content"] .= "有償サービス（「寄付」と偽装されたものを含む）で使用されることではありません。"
+        LicenseLang["Content"] .= "私およびコミュニティの意志を尊重していただけることを願っています。"
+        LicenseLang["Content"] .= "現在適用されている CC BY-NC 4.0 ライセンスでは、非営利目的に限り、"
+        LicenseLang["Content"] .= "ソフトウェアの使用・改変・共有が可能です。営利目的での利用、"
+        LicenseLang["Content"] .= "たとえば有償サービスの提供や販売（寄付を含む）などは、このライセンスのもとでは許可されていません。"
+        LicenseLang["Content"] .= "この新しいライセンスは、本リリースおよび今後のすべてのリリースに適用されます。"
+    } else if (Language = 4) {
+        LicenseLang["Title"] := "Dieses Projekt ist lizensiert unter CC BY-NC 4.0"
+        LicenseLang["Content"] := "Die ursprüngliche Absicht dieses Projekts war nicht,"
+        LicenseLang["Content"] .= " dass es für bezahlte Dienste genutzt wird – "
+        LicenseLang["Content"] .= "auch nicht in Form angeblicher 'Spenden'. "
+        LicenseLang["Content"] .= "Ich hoffe, dass die Leute meine Wünsche und die der Community respektieren."
+        LicenseLang["Content"] .= "`nDas Projekt steht nun unter der Lizenz CC BY-NC 4.0. Diese erlaubt die Nutzung, "
+        LicenseLang["Content"] .= "Modifikation und Weitergabe der "
+        LicenseLang["Content"] .= "Software ausschließlich für nicht-kommerzielle Zwecke. "
+        LicenseLang["Content"] .= "Kommerzielle Nutzung – einschließlich bezahlter Dienste oder "
+        LicenseLang["Content"] .= "Verkäufe (auch mit Spenden) – ist unter dieser Lizenz nicht gestattet. "
+        LicenseLang["Content"] .= "Die neue Lizenz gilt für diese und alle zukünftigen Versionen."
+    }
+    return LicenseLang
+}
+
+CreateProxyLanguage(Language) {
+    ProxyLang := Object()
+    if (Language = 1) {
+        ProxyLang["Notice"] := "Proxy detected. Switched to proxy version."
+    } else if (Language = 2) {
+        ProxyLang["Notice"] := "偵測到代理，已切換至代理版本。"
+    } else if (Language = 3) {
+        ProxyLang["Notice"] := "プロキシを検出しました。プロキシ版に切り替えました。"
+    } else if (Language = 4) {
+        ProxyLang["Notice"] := "Proxy erkannt. Wechsle zur Proxy-Version."
+    }
+    return ProxyLang
+}
+
+CreateSetUpByLanguage(Language) {
+    SetUpLang := Object()
+    if (Language = 1) {
+        SetUpLang["Error_BotPathTooLong"] := "The path to the bot folder is too long "
+        SetUpLang["Error_BotPathTooLong"] .= "or contains white spaces. "
+        SetUpLang["Error_BotPathTooLong"] .= "Please move it to a shorter path without spaces."
+        SetUpLang["Confirm_SelectedMethod"] := "Selected Method: "
+        SetUpLang["Confirm_RangeValue"] := "Range Value: "
+        SetUpLang["Confirm_MaxPackCount"] := "Maximum Pack Count: "
+        SetUpLang["Confirm_MinPackCount"] := "Minimum Pack Count: "
+        SetUpLang["Confirm_SelectedPacks"] := "Selected Packs: "
+        SetUpLang["Confirm_AdditionalSettings"] := "Additional settings: "
+        SetUpLang["Confirm_1PackMethod"] := "• 1 Pack Method"
+        SetUpLang["Confirm_MenuDelete"] := "• Menu Delete"
+        SetUpLang["Confirm_SpendHourGlass"] := "• Spend Hour Glass"
+        SetUpLang["Confirm_ClaimMissions"] := "• Claim Special Missions"
+        SetUpLang["Confirm_SortBy"] := "• Sort By:"
+        SetUpLang["Confirm_None"] := "None"
+        SetUpLang["Confirm_CardDetection"] := "Card Detection: "
+        SetUpLang["Confirm_SingleFullArt"] := "• Single Full Art"
+        SetUpLang["Confirm_SingleTrainer"] := "• Single Trainer"
+        SetUpLang["Confirm_SingleRainbow"] := "• Single Rainbow"
+        SetUpLang["Confirm_Double2Star"] := "• Double 2 ★"
+        SetUpLang["Confirm_SaveCrowns"] := "• Save Crowns"
+        SetUpLang["Confirm_SaveShiny"] := "• Save Shiny"
+        SetUpLang["Confirm_SaveImmersives"] := "• Save Immersives"
+        SetUpLang["Confirm_OnlyShinyPacks"] := "• Only Shiny Packs"
+        SetUpLang["Confirm_IgnoreInvalid"] := "• Ignore Invalid Packs"
+        SetUpLang["Confirm_RowGap"] := "Row Gap: "
+        SetUpLang["Confirm_StartBot"] := "Click 'Yes' to START THE BOT with these settings."
+        SetUpLang["Confirm_StartBot"] .= " Click 'No' to CHANGE settings."
+    } else if (Language = 2) {
+        SetUpLang["Error_BotPathTooLong"] := "機器人資料夾的路徑太長或包含空白，"
+        SetUpLang["Error_BotPathTooLong"] := "請將其移至較短且不含空格的路徑"
+        SetUpLang["Confirm_SelectedMethod"] := "刷包法："
+        SetUpLang["Confirm_RangeValue"] := "範圍："
+        SetUpLang["Confirm_MaxPackCount"] := "最大卡包數量："
+        SetUpLang["Confirm_MinPackCount"] := "最小卡包數量："
+        SetUpLang["Confirm_SelectedPacks"] := "選擇的卡包："
+        SetUpLang["Confirm_AdditionalSettings"] := "其他設定："
+        SetUpLang["Confirm_1PackMethod"] := "• 單包模式"
+        SetUpLang["Confirm_MenuDelete"] := "• 選單刪除"
+        SetUpLang["Confirm_SpendHourGlass"] := "• 使用沙漏"
+        SetUpLang["Confirm_ClaimMissions"] := "• 領取特殊任務"
+        SetUpLang["Confirm_SortBy"] := "• 注入排序："
+        SetUpLang["Confirm_None"] := "無"
+        SetUpLang["Confirm_CardDetection"] := "卡片偵測："
+        SetUpLang["Confirm_SingleFullArt"] := "• 單張全圖"
+        SetUpLang["Confirm_SingleTrainer"] := "• 單張人物"
+        SetUpLang["Confirm_SingleRainbow"] := "• 單張彩圖"
+        SetUpLang["Confirm_Double2Star"] := "• 雙 2 ★"
+        SetUpLang["Confirm_SaveCrowns"] := "• 保留皇冠"
+        SetUpLang["Confirm_SaveShiny"] := "• 保留閃光"
+        SetUpLang["Confirm_SaveImmersives"] := "• 保留實境"
+        SetUpLang["Confirm_OnlyShinyPacks"] := "• 只檢查閃光"
+        SetUpLang["Confirm_IgnoreInvalid"] := "• 忽略無效包"
+        SetUpLang["Confirm_RowGap"] := "列間距："
+        SetUpLang["Confirm_StartBot"] := "按「是」開始運行，按「否」返回修改設定。"
+    } else if (Language = 3) {
+        SetUpLang["Error_BotPathTooLong"] := "BOTフォルダのパスが長すぎるか、スペースが含まれています"
+        SetUpLang["Error_BotPathTooLong"] .= "。より短くスペースを含まないパスに移動してください。"
+        SetUpLang["Confirm_SelectedMethod"] := "注入法："
+        SetUpLang["Confirm_RangeValue"] := "範圍："
+        SetUpLang["Confirm_MaxPackCount"] := "上限："
+        SetUpLang["Confirm_MinPackCount"] := "下限："
+        SetUpLang["Confirm_SelectedPacks"] := "選択されたパック："
+        SetUpLang["Confirm_AdditionalSettings"] := "追加設定："
+        SetUpLang["Confirm_1PackMethod"] := "• シングルパックモード"
+        SetUpLang["Confirm_MenuDelete"] := "• リスト削除"
+        SetUpLang["Confirm_SpendHourGlass"] := "• 砂時計使用"
+        SetUpLang["Confirm_ClaimMissions"] := "• イベント"
+        SetUpLang["Confirm_SortBy"] := "• 注入序列："
+        SetUpLang["Confirm_None"] := "なし"
+        SetUpLang["Confirm_CardDetection"] := "カード検出："
+        SetUpLang["Confirm_SingleFullArt"] := "• 単枚フルアート"
+        SetUpLang["Confirm_SingleTrainer"] := "• 単枚トレーナー"
+        SetUpLang["Confirm_SingleRainbow"] := "• 単枚レインボー"
+        SetUpLang["Confirm_Double2Star"] := "• 2枚2★"
+        SetUpLang["Confirm_SaveCrowns"] := "• クラウンを保存"
+        SetUpLang["Confirm_SaveShiny"] := "• 色違い保存"
+        SetUpLang["Confirm_SaveImmersives"] := "• 演出型保存"
+        SetUpLang["Confirm_OnlyShinyPacks"] := "• 色違いのみ"
+        SetUpLang["Confirm_IgnoreInvalid"] := "• 無効パック無視"
+        SetUpLang["Confirm_RowGap"] := "行間隔："
+        SetUpLang["Confirm_StartBot"] := "「はい」でこの設定でBOTを開始。「いいえ」で設定を変更します。"
+    } else if (Language = 4) {
+        SetUpLang["Error_BotPathTooLong"] := "Der Pfad zum Bot-Ordner ist zu lang oder "
+        SetUpLang["Error_BotPathTooLong"] .= "enthält Leerzeichen. Bitte verschiebe "
+        SetUpLang["Error_BotPathTooLong"] .= "ihn in ein kürzeres Verzeichnis ohne Leerzeichen."
+        SetUpLang["Confirm_SelectedMethod"] := "Gewählte Methode: "
+        SetUpLang["Confirm_RangeValue"] := "Wertbereich: "
+        SetUpLang["Confirm_MaxPackCount"] := "Maximale Paketanzahl: "
+        SetUpLang["Confirm_MinPackCount"] := "Mindestpackungsanzahl: "
+        SetUpLang["Confirm_SelectedPacks"] := "Gewählte Packs: "
+        SetUpLang["Confirm_AdditionalSettings"] := "Weitere Einstellungen: "
+        SetUpLang["Confirm_1PackMethod"] := "• 1-Pack Methode"
+        SetUpLang["Confirm_MenuDelete"] := "• Menü löschen"
+        SetUpLang["Confirm_SpendHourGlass"] := "• Sanduhren verwenden"
+        SetUpLang["Confirm_ClaimMissions"] := "• Spezialmissionen einfordern"
+        SetUpLang["Confirm_SortBy"] := "• Sortieren nach: "
+        SetUpLang["Confirm_None"] := "Keine"
+        SetUpLang["Confirm_CardDetection"] := "Kartenerkennung: "
+        SetUpLang["Confirm_SingleFullArt"] := "• Einzelne Full Art"
+        SetUpLang["Confirm_SingleTrainer"] := "• Einzelne Trainer"
+        SetUpLang["Confirm_SingleRainbow"] := "• Einzelne Regenbogen"
+        SetUpLang["Confirm_Double2Star"] := "• Doppelte 2 ★"
+        SetUpLang["Confirm_SaveCrowns"] := "• Kronen speichern"
+        SetUpLang["Confirm_SaveShiny"] := "• Schillernde speichern"
+        SetUpLang["Confirm_SaveImmersives"] := "• Immersive speichern"
+        SetUpLang["Confirm_OnlyShinyPacks"] := "• Nur schillernde Packs"
+        SetUpLang["Confirm_IgnoreInvalid"] := "• Ignoriere ungültige Packs"
+        SetUpLang["Confirm_RowGap"] := "Abstand zw. Instanzen: "
+        SetUpLang["Confirm_StartBot"] := "Klicke auf „Ja“, um den BOT mit diesen "
+        SetUpLang["Confirm_StartBot"] .= "Einstellungen zu STARTEN. Klicke auf "
+        SetUpLang["Confirm_StartBot"] .= "„Nein“, um die Einstellungen zu ÄNDERN."
+    }
+    return SetUPLang
+}
+CreateHelpByLanguage(Language) {
+    HelpLang := Object()
+    if (Language = 1) {
+        HelpLang["Help_Shortcuts"] := "Keyboard Shortcuts: "
+        HelpLang["Help_FunctionKeys"] := "Function Keys: "
+        HelpLang["Help_F4"] := "Show This Help Menu"
+        HelpLang["Help_ShiftF7"] := "Send All Offline Status & Exit"
+        HelpLang["Help_Interface"] := "Interface Settings: "
+        HelpLang["Help_CurrentTheme"] := "Current Theme: "
+        HelpLang["Help_BackgroundImage"] := "Background Image: "
+        HelpLang["Help_Enabled"] := "Enabled"
+        HelpLang["Help_Disabled"] := "Disabled"
+        HelpLang["Help_ToggleTheme"] := "Toggle theme with the button at the top of the window."
+        HelpLang["Help_ToggleBG"] := "Toggle background image with the BG button."
+    } else if (Language = 2) {
+        HelpLang["Help_Shortcuts"] := "快捷鍵說明："
+        HelpLang["Help_FunctionKeys"] := "功能鍵："
+        HelpLang["Help_F4"] := "顯示此說明選單"
+        HelpLang["Help_ShiftF7"] := "傳送所有離線狀態並關閉"
+        HelpLang["Help_Interface"] := "介面設定："
+        HelpLang["Help_CurrentTheme"] := "目前主題："
+        HelpLang["Help_BackgroundImage"] := "背景圖片："
+        HelpLang["Help_Enabled"] := "開啟"
+        HelpLang["Help_Disabled"] := "關閉"
+        HelpLang["Help_ToggleTheme"] := "可使用視窗頂部的按鈕切換主題。"
+        HelpLang["Help_ToggleBG"] := "可使用「背景」按鈕開關背景圖片。"
+    } else if (Language = 3) {
+        HelpLang["Help_Shortcuts"] := "ホットキー："
+        HelpLang["Help_FunctionKeys"] := "ファンクションキー："
+        HelpLang["Help_F4"] := "このヘルプメニューを表示"
+        HelpLang["Help_ShiftF7"] := "全てのエミュレータにオフライン状況を送信し、ボットを終了する"
+        HelpLang["Help_Interface"] := "インターフェース設定："
+        HelpLang["Help_CurrentTheme"] := "現在のモード："
+        HelpLang["Help_BackgroundImage"] := "背景画像："
+        HelpLang["Help_Enabled"] := "オン"
+        HelpLang["Help_Disabled"] := "オフ"
+        HelpLang["Help_ToggleTheme"] := "ウィンドウ上部のボタンでテーマを切り替えます。"
+        HelpLang["Help_ToggleBG"] := "「背景」ボタンで背景画像を切り替えます。"
+    } else if (Language = 4) {
+        HelpLang["Help_Shortcuts"] := "Tastatur Shortcuts: "
+        HelpLang["Help_FunctionKeys"] := "Funktionstasten: "
+        HelpLang["Help_F4"] := "Dieses Hilfemenü anzeigen"
+        HelpLang["Help_ShiftF7"] := "Sende alle Offline Status & Verlassen"
+        HelpLang["Help_Interface"] := "Oberflächeneinstellungen: "
+        HelpLang["Help_CurrentTheme"] := "Aktuelles Thema: "
+        HelpLang["Help_BackgroundImage"] := "Hintergrundbild: "
+        HelpLang["Help_Enabled"] := "Aktiviert"
+        HelpLang["Help_Disabled"] := "Deaktiviert"
+        HelpLang["Help_ToggleTheme"] := "Wechsle das Thema mit dem Knopf oben im Fenster."
+        HelpLang["Help_ToggleBG"] := "Hintergrundbild mit dem BG-Button ein-/ausschalten."
+    }
+    return HelpLang
+}
+
+PageBtnShift(Language) {
+    global
+    xs_TitleSet := 0
+    xs_Reroll := 0
+    xs_System := 0
+    xs_Pack := 0
+    xs_Trade := 0
+    xs_Discord := 0
+    xs_Download := 0
+    xs_MainPage := 0
+    ys := 0
+
+    xs_Arrange := 0
+    xs_Coffee := 0
+    xs_Join := 0
+    xs_Launch := 0
+    xs_Balance := 0
+    xs_Start := 0
+    xs_Update := 0
+    xs_SettingPage := 0
+    ys_SettingPage := 0
+
+    xs_Return := 0
+    ys_Return := 0
+
+    xs_Background := 0
+    xs_Reload := 0
+    xs_Theme := 0
+    xs_Language := 0
+    xs_ToolTip := 0
+    ys_Background := 0
+    ys_Theme := 0
+    ys_Reload := 0
+    ys_Language := 0
+    ys_ToolTip := 0
+    if (defaultBotLanguage = 1) {
+        xs_TitleSet := 10
+        xs_Reroll := 0
+        xs_System := 0
+        xs_Pack := 0
+        xs_Trade := 0
+        xs_Discord := 0
+        xs_Download := 0
+        xs_MainPage := 0
+        ys := 0
+
+        xs_Arrange := 0
+        xs_Coffee := 0
+        xs_Join := 0
+        xs_Launch := 0
+        xs_Balance := 0
+        xs_Start := 0
+        xs_Update := 0
+        xs_SettingPage := 0
+        ys_SettingPage := 0
+
+        xs_Return := 0
+        ys_Return := 0
+
+        xs_Background := -3
+        xs_Reload := -6
+        xs_Theme := 0
+        xs_Language := -8
+        xs_ToolTip := -11
+        ys_Background := 0
+        ys_Theme := 0
+        ys_Reload := 0
+    } else if (defaultBotLanguage = 2) {
+        xs_TitleSet := 10
+        xs_Reroll := 26
+        xs_System := 32
+        xs_Pack := 22
+        xs_Trade := 25
+        xs_Discord := 22
+        xs_Download := 42
+        xs_MainPage := 6
+        ys := 2
+
+        xs_Arrange := 37
+        xs_Coffee := 12
+        xs_Join := 4
+        xs_Launch := 4
+        xs_Balance := 6
+        xs_Start := 5
+        xs_Update := 32
+        xs_SettingPage := 12
+        ys_SettingPage := 3
+
+        xs_Return := 16
+        ys_Return := 4
+
+        xs_Background := 18
+        xs_Reload := 9
+        xs_Theme := 0
+        xs_Language := 19
+        xs_ToolTip := -11
+        ys_Background := 1
+        ys_Theme := 1
+        ys_Reload := 1
+        ys_Language := 1
+        ys_ToolTip := 1
+    } else if (defaultBotLanguage = 3) {
+        xs_TitleSet := 10
+        xs_Reroll := 11
+        xs_System := 18
+        xs_Pack := 15
+        xs_Trade := 11
+        xs_Discord := 22
+        xs_Download := 12
+        xs_MainPage := -14
+        ys := 2
+
+        xs_Arrange := 10
+        xs_Coffee := 12
+        xs_Join := 0
+        xs_Launch := -27
+        xs_Balance := -7
+        xs_Start := -8
+        xs_Update := 27
+        xs_SettingPage := 8
+        ys_SettingPage := 3
+
+        xs_Return := 26
+        ys_Return := 4
+
+        xs_Background := -9
+        xs_Reload := -26
+        xs_Theme := -37
+        xs_Language := -4
+        xs_ToolTip := -11
+        ys_Background := 0
+        ys_Theme := 0
+        ys_Reload := 0
+    } else if (defaultBotLanguage := 4) {
+        xs_TitleSet := 0
+        xs_Reroll := -15
+        xs_System := -15
+        xs_Pack := -15
+        xs_Trade := -15
+        xs_Discord := -15
+        xs_Download := -15
+        xs_MainPage := 4
+        ys := 0
+
+        xs_Arrange := 0
+        xs_Coffee := -40
+        xs_Join := -20
+        xs_Launch := -15
+        xs_Balance := -15
+        xs_Start := -5
+        xs_Update := -20
+        xs_SettingPage := 0
+        ys_SettingPage := 0
+
+        xs_Return := 0
+        ys_Return := 0
+
+        xs_Background := 2
+        xs_Reload := -10
+        xs_Theme := 0
+        xs_ToolTip := -11
+        ys_Background := 0
+        ys_Theme := 0
+        ys_Reload := 0
+    }
+}
+
+PackControlsShift(Language) {
+    global
+    xs_Min2star := 0
+    xs_MinShing := 0
+    xs_Hourglass := 0
+    xs_SpecialCheck := 0
+    xs_Sort := 0
+    xs_SaveCrown := 0
+    xs_SaveShing := 0
+    xs_SaveImmer := 0
+    xs_invalid := 0
+    if (defaultBotLanguage = 4) {
+        xs_Min2star := -10
+        xs_MinShing := -20
+        xs_SpecialCheck := 20
+        xs_Sort := 20
+        xs_SaveCrown := 10
+        xs_SaveShing := 10
+        xs_SaveImmer := 10
+        xs_invalid := -10
+    }
+}
