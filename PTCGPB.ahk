@@ -12,7 +12,7 @@ OnError("ErrorHandler")  ; Add this line here
 
 global STATIC_BRUSH := 0
 
-githubUser := "mixman208"
+githubUser := "DeadlyVirusIn"
 repoName := "PTCGPB"
 localVersion := "v6.4.7"
 scriptFolder := A_ScriptDir
