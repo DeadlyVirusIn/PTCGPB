@@ -34,7 +34,7 @@ Loop {
 
         IniRead, LastEndEpoch, %A_ScriptDir%\Scripts\%instanceNum%.ini, Metrics, LastEndEpoch, 0
         secondsSinceLastEnd := nowEpoch - LastEndEpoch
-        if(LastEndEpoch > 0 && secondsSinceLastEnd > (15 * 60))
+        if(LastEndEpoch > 0 && secondsSinceLastEnd > (10 * 60))
         {
             ; msgbox, Killing Instance %instanceNum%! Last Run Completed %secondsSinceLastEnd% Seconds Ago
             msg := "Killing Instance " . instanceNum . "! Last Run Completed " . secondsSinceLastEnd . " Seconds Ago"
