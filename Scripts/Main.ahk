@@ -163,6 +163,7 @@ Loop {
     FindImageAndClick(120, 500, 155, 530, , "Social", 143, 518, 1000, 30)
     FindImageAndClick(226, 100, 270, 135, , "Add", 38, 460, 500)
     FindImageAndClick(170, 450, 195, 480, , "Approve", 228, 464)
+    /* ; Deny all option
     if(firstRun) {
         Sleep, 1000
         adbClick(205, 510)
@@ -170,6 +171,7 @@ Loop {
         adbClick(210, 372)
         firstRun := false
     }
+    */
     done := false
     Loop 3 {
         Sleep, %Delay%
@@ -801,8 +803,13 @@ RemoveNonVipFriends() {
 
     friendIndex := 0
     repeatFriendAccounts := 0
+	scrolledWithoutFriend := 0
     recentFriendAccounts := []
     Loop {
+        if (scrolledWithoutFriend > 5){
+            CreateStatusMessage("End of list - scrolled without friend codes multiple times.`nReady to test.")
+            return
+        }
         friendClickY := 195 + (95 * friendIndex)
         if (FindImageAndClick(75, 400, 105, 420, , "Friend", 138, friendClickY, 500, 3)) {
             Delay(1)
@@ -835,8 +842,10 @@ RemoveNonVipFriends() {
                     LogToFile("Friend skipped: " . friendAccount.ToString() . ". Couldn't parse identifiers.", "GPTestLog.txt")
                 }
                 ; If it's a VIP friend, skip removal
-                if (isVipResult)
+                if (isVipResult) {
                     CreateStatusMessage("Parsed friend: " . friendAccount.ToString() . "`nMatched VIP: " . matchedFriend.ToString() . "`nSkipping VIP...",,,, false)
+					scrolledWithoutFriend := 0
+				}
                 Sleep, 1500 ; Time to read
                 FindImageAndClick(226, 100, 270, 135, , "Add", 143, 507, 500)
                 Delay(2)
@@ -866,6 +875,7 @@ RemoveNonVipFriends() {
                 Delay(1)
                 FindImageAndClick(226, 100, 270, 135, , "Add", 143, 507, 500)
                 Delay(3)
+				scrolledWithoutFriend := 0
             }
         }
         else {
@@ -887,6 +897,7 @@ RemoveNonVipFriends() {
                 FindImageAndClick(226, 100, 270, 135, , "Add", 143, 508, 500)
                 Delay(3)
             }
+			scrolledWithoutFriend++
         }
         if (!GPTest) {
             Return
