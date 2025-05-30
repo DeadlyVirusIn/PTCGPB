@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PTCGP Bot - Complete User Guide</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: #2d3748;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        
+        .document {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header .subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            font-weight: 300;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .version-badge {
+            display: inline-block;
+            background: #48bb78;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-top: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .main-content {
+            padding: 3rem;
+        }
+        
+        .toc {
+            background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            border-left: 5px solid #4299e1;
+        }
+        
+        .toc h2 {
+            color: #1a202c;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .toc-item {
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .toc-item:hover {
+            border-color: #4299e1;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .toc-item a {
+            text-decoration: none;
+            color: #4299e1;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .section {
+            margin-bottom: 3rem;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .section-header {
+            background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .section-header h2 {
+            font-size: 1.75rem;
+            font-weight: 600;
+        }
+        
+        .section-header .icon {
+            font-size: 2rem;
+        }
+        
+        .section-content {
+            padding: 2rem;
+        }
+        
+        .setting-group {
+            margin-bottom: 2rem;
+        }
+        
+        .setting-group h3 {
+            color: #2d3748;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .setting-item {
+            background: #f7fafc;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid #4299e1;
+            transition: all 0.2s ease;
+        }
+        
+        .setting-item:hover {
+            background: #edf2f7;
+            transform: translateX(5px);
+        }
+        
+        .setting-name {
+            font-weight: 600;
+            color: #1a202c;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .setting-description {
+            color: #4a5568;
+            line-height: 1.6;
+        }
+        
+        .setting-description ul {
+            margin: 0.5rem 0 0 1rem;
+        }
+        
+        .setting-description li {
+            margin-bottom: 0.25rem;
+        }
+        
+        .keyboard-shortcuts {
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .keyboard-shortcuts h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .shortcut-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .shortcut-category {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 1.5rem;
+        }
+        
+        .shortcut-category h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #90cdf4;
+        }
+        
+        .shortcut-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .shortcut-key {
+            background: #4a5568;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .highlight-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .step {
+            background: rgba(255,255,255,0.2);
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        .step-number {
+            background: white;
+            color: #48bb78;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin: 0 auto 0.5rem;
+        }
+        
+        .footer {
+            background: #1a202c;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .footer h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-link {
+            color: #90cdf4;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.2s ease;
+        }
+        
+        .footer-link:hover {
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .main-content {
+                padding: 1.5rem;
+            }
+            
+            .toc-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .shortcut-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .print-hidden {
+            display: block;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .document {
+                box-shadow: none;
+                border-radius: 0;
+            }
+            
+            .print-hidden {
+                display: none;
+            }
+            
+            .section {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="document">
+        <div class="header">
+            <h1>🎮 PTCGP Bot</h1>
+            <p class="subtitle">Complete User Guide & Interface Documentation</p>
+            <div class="version-badge">v6.4.5 Beta</div>
+        </div>
+        
+        <div class="main-content">
+            <div class="toc">
+                <h2>📋 Table of Contents</h2>
+                <div class="toc-grid">
+                    <div class="toc-item">
+                        <a href="#navigation">🧭 Navigation & Controls</a>
+                    </div>
+                    <div class="toc-item">
+                        <a href="#reroll-settings">🔄 Reroll Settings</a>
+                    </div>
+                    <div class="toc-item">
+                        <a href="#system-settings">⚙️ System Settings</a>
+                    </div>
+                    <div class="toc-item">
+                        <a href="#pack-settings">📦 Pack Settings</a>
+                    </div>
+                    <div class="toc-item">
+                        <a href="#save-for-trade">💎 Save For Trade</a>
+                    </div>
+                    <div class="toc-item">
+                        <a href="#discord-settings">💬 Discord Settings</a>
+                    </div>
+                    <div class="toc-item">
+                        <a href="#download-settings">⬇️ Download Settings</a>
+                    </div>
+                    <div class="toc-item">
+                        <a href="#shortcuts">⌨️ Keyboard Shortcuts</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>🚀 Quick Start Guide</h3>
+                <p>Get your bot running in minutes with these essential steps:</p>
+                <div class="steps-grid">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <strong>Reroll Settings</strong>
+                        <p>Configure Friend ID & instances</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <strong>System Settings</strong>
+                        <p>Set monitor & MuMu path</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <strong>Pack Settings</strong>
+                        <p>Choose method & packs</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <strong>Start Bot</strong>
+                        <p>Launch and enjoy!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section" id="navigation">
+                <div class="section-header">
+                    <div class="icon">🧭</div>
+                    <h2>Navigation & Main Controls</h2>
+                </div>
+                <div class="section-content">
+                    <div class="setting-group">
+                        <h3>🎨 Theme & Interface</h3>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">🌙 Theme Toggle</div>
+                            <div class="setting-description">
+                                Switch between Dark and Light themes. The current theme affects all colors and styling throughout the interface. Dark theme is recommended for extended use to reduce eye strain.
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">🖼️ Background Toggle</div>
+                            <div class="setting-description">
+                                Toggle background image visibility. Requires GUI.png, GUI_Dark.png, or GUI_Light.png in the bot folder. Theme-specific backgrounds will be automatically selected when available.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <h3>🚀 Action Buttons</h3>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">🎯 Launch All MuMu</div>
+                            <div class="setting-description">
+                                Launch all configured MuMu instances using the LaunchAllMumu.ahk script. This will start all your emulator instances according to your instance settings.
+                                <br><strong>Shortcut:</strong> F1
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">🪟 Arrange Windows</div>
+                            <div class="setting-description">
+                                Arrange all MuMu windows in a perfect grid layout based on your Columns and Row Gap settings. Essential for organized multi-instance management.
+                                <br><strong>Shortcut:</strong> F2
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">▶️ Start Bot</div>
+                            <div class="setting-description">
+                                Start the bot with your current settings. Shows a comprehensive confirmation dialog with all selected options before beginning the reroll process.
+                                <br><strong>Shortcut:</strong> F3
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">🔄 Reload</div>
+                            <div class="setting-description">
+                                Save current settings and reload the bot. Useful after changing configurations or when you need to refresh the interface.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section" id="reroll-settings">
+                <div class="section-header">
+                    <div class="icon">🔄</div>
+                    <h2>Reroll Settings</h2>
+                </div>
+                <div class="section-content">
+                    <div class="setting-group">
+                        <h3>👥 Friend ID Configuration</h3>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">🆔 Friend ID</div>
+                            <div class="setting-description">
+                                Enter your Pokemon TCG Pocket Friend ID for friend battles and social features. Leave empty if using the ids.txt API instead. This ID will be used across all instances for friend interactions.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <h3>⚡ Instance Management</h3>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">📱 Instances</div>
+                            <div class="setting-description">
+                                Number of regular reroll instances to run. Each instance handles one account simultaneously. Recommended range: 1-50 depending on your system specifications.
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">⏱️ Instance Start Delay</div>
+                            <div class="setting-description">
+                                Delay in seconds between launching instances. Helps prevent system overload during startup. Recommended: 2-5 seconds for optimal performance.
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">📊 Columns</div>
+                            <div class="setting-description">
+                                Number of instances per row when arranging windows. Affects the grid layout of your instance windows. Recommended: 3-6 depending on screen size and resolution.
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">⭐ Run Main(s)</div>
+                            <div class="setting-description">
+                                Enable Main instance(s) for primary account(s). Main instances can run different logic than reroll instances and are useful for keeping main accounts active while rerolling others.
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">🎮 Account Name</div>
+                            <div class="setting-description">
+                                Display name for this bot configuration. Used in Discord notifications and logs to help identify different bot setups when running multiple configurations.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <h3>⏰ Timing Settings</h3>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">⚡ Delay</div>
+                            <div class="setting-description">
+                                Base delay between actions in milliseconds. Lower values mean faster execution but less stability. Recommended: 200-500ms for optimal balance.
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">⏳ Wait Time</div>
+                            <div class="setting-description">
+                                Wait time in seconds for various operations including loading screens and animations. Recommended: 3-10 seconds depending on device performance.
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">👆 Swipe Speed</div>
+                            <div class="setting-description">
+                                Speed of swipe animations in milliseconds. Affects pack opening and menu navigation smoothness. Recommended: 200-500ms.
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">🐌 Base Game Compatibility</div>
+                            <div class="setting-description">
+                                Enable compatibility mode for slower devices. Increases delays for better stability. Use if experiencing frequent crashes or detection issues.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section" id="system-settings">
+                <div class="section-header">
+                    <div class="icon">⚙️</div>
+                    <h2>System Settings</h2>
+                </div>
+                <div class="section-content">
+                    <div class="setting-group">
+                        <h3>🖥️ Display Configuration</h3>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">📺 Monitor Selection</div>
+                            <div class="setting-description">
+                                Select which monitor to display instances on. Choose based on your multi-monitor setup. All instances will arrange on the selected monitor according to your column settings.
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">🔍 UI Scale</div>
+                            <div class="setting-description">
+                                UI scaling setting for MuMu instances:
+                                <ul>
+                                    <li><strong>Scale125:</strong> 125% UI scaling (default)</li>
+                                    <li><strong>Scale100:</strong> 100% UI scaling</li>
+                                </ul>
+                                Must match your MuMu display settings exactly.
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">📏 Row Gap</div>
+                            <div class="setting-description">
+                                Vertical spacing between rows of instances in pixels. Recommended: 50-150 pixels. Adjust based on your screen resolution and preference.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <h3>📁 File System</h3>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">📂 MuMu Folder Path</div>
+                            <div class="setting-description">
+                                Path to MuMu Player installation directory. Usually: <code>C:\Program Files\Netease</code>. Required for launching instances automatically.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <h3>🌐 Language Settings</h3>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">👁️ OCR Language</div>
+                            <div class="setting-description">
+                                Language for Optical Character Recognition. Must match your game client language for accurate text detection.
+                                <br><strong>Supported:</strong> en, zh, es, de, fr, ja, ru, pt, ko, it, tr, pl, nl, sv, ar, uk, id, vi, th, he, cs, no, da, fi, hu, el, zh-TW
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">🎮 Client Language</div>
+                            <div class="setting-description">
+                                Pokemon TCG Pocket client language. Must match your in-game language setting exactly.
+                                <br><strong>Supported:</strong> en, es, fr, de, it, pt, jp, ko, cn
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <h3>🔧 Advanced Options</h3>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">🚀 Instance Launch Delay</div>
+                            <div class="setting-description">
+                                Delay in seconds when launching MuMu instances. Prevents system overload during startup. Recommended: 3-10 seconds based on system performance.
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">📊 Auto Launch Monitor</div>
+                            <div class="setting-description">
+                                Automatically launch Monitor.ahk with the bot. The monitor script tracks instance health and performance. Recommended to keep enabled.
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">🎯 Use Role-Based Filters</div>
+                            <div class="setting-description">
+                                Enable role-based filtering for advanced users. Provides additional filtering options for specific use cases. Leave unchecked unless you understand its purpose.
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">🐛 Debug Mode</div>
+                            <div class="setting-description">
+                                Enable debug logging and additional information. Creates detailed logs for troubleshooting issues. Only enable when debugging problems.
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">🔬 Use Tesseract OCR</div>
+                            <div class="setting-description">
+                                Use Tesseract OCR instead of built-in OCR. Requires separate Tesseract installation. May improve text recognition accuracy in some cases.
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">💬 Status Messages</div>
+                            <div class="setting-description">
+                                Show status messages during operation. Displays current bot actions and progress. Recommended to keep enabled for monitoring.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section" id="pack-settings">
+                <div class="section-header">
+                    <div class="icon">📦</div>
+                    <h2>Pack Settings</h2>
+                </div>
+                <div class="section-content">
+                    <div class="setting-group">
+                        <h3>⭐ God Pack Configuration</h3>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">✨ Minimum 2★ Cards</div>
+                            <div class="setting-description">
+                                Minimum 2-star cards required to keep a pack. Packs with fewer 2-star cards will be rerolled. Range: 0-5 (0 = keep all packs regardless of stars).
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">🌟 2★ for Shiny Packs</div>
+                            <div class="setting-description">
+                                Separate minimum 2-star requirement specifically for Shiny packs. Usually set lower than regular minimum since Shiny packs are rarer.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <h3>🔄 Reroll Methods</h3>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">📋 Method Selection</div>
+                            <div class="setting-description">
+                                Choose your reroll strategy:
+                                <ul>
+                                    <li><strong>13 Pack:</strong> Traditional method - delete account after opening 13 packs</li>
+                                    <li><strong>Inject:</strong> Advanced account injection system for experienced users</li>
+                                    <li><strong>Inject Missions:</strong> Injection with automatic mission completion</li>
+                                    <li><strong>Inject for Reroll:</strong> Injection with pack count thresholds</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">1️⃣ 1 Pack Method</div>
+                            <div class="setting-description">
+                                Open only 1 pack per account instead of multiple. Enables faster rerolls but provides fewer chances per account.
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">💥 Menu Delete</div>
+                            <div class="setting-description">
+                                Delete accounts through the in-game menu. Only available for non-Inject methods. Provides a cleaner deletion process.
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">⏰ Spend Hourglass</div>
+                            <div class="setting-description">
+                                Automatically spend Hourglasses for extra pack openings. Uses in-game currency for additional opportunities. Available for Inject methods.
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">🎯 Claim Special Missions</div>
+                            <div class="setting-description">
+                                Complete special missions during injection. Only available for 'Inject Missions' method. Provides additional rewards and pack opportunities.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <h3>📊 Injection Settings</h3>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">📈 Maximum Pack Count</div>
+                            <div class="setting-description">
+                                Maximum pack count for Inject methods. Accounts with more packs will be skipped to focus on newer accounts. Default: 39 packs.
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">📉 Minimum Pack Count</div>
+                            <div class="setting-description">
+                                Minimum pack count for 'Inject for Reroll' method. Only reroll accounts with fewer packs than this threshold. Default: 35 packs.
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">🔄 Sort Order</div>
+                            <div class="setting-description">
+                                Sort order for account injection:
+                                <ul>
+                                    <li><strong>Oldest First:</strong> Process oldest accounts first</li>
+                                    <li><strong>Newest First:</strong> Process newest accounts first</li>
+                                    <li><strong>Fewest Packs:</strong> Process accounts with fewer packs first</li>
+                                    <li><strong>Most Packs:</strong> Process accounts with more packs first</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <h3>📦 Pack Selection</h3>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">🎴 Available Packs</div>
+                            <div class="setting-description">
+                                Select which pack types to open during rerolls:
+                                <ul>
+                                    <li><strong>Solgaleo & Lunala:</strong> Space Roar A3 packs</li>
+                                    <li><strong>Shining:</strong> Special Shining Fates packs</li>
+                                    <li><strong>Arceus, Palkia, Dialga:</strong> Time Gazer A2 packs</li>
+                                    <li><strong>Pikachu, Charizard, Mewtwo, Mew:</strong> Lightning Storm A1 packs</li>
+                                </ul>
+                                Check multiple packs to rotate between them during rerolls.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <h3>🔍 Card Detection</h3>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">🎨 Single Full Art</div>
+                            <div class="setting-description">
+                                Save accounts with single Full Art cards. Keeps accounts that pull any Full Art card, perfect for collection building.
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">👤 Single Trainer</div>
+                            <div class="setting-description">
+                                Save accounts with single Trainer cards. Keeps accounts that pull any Trainer card, useful for competitive deck building.
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">🌈 Single Rainbow</div>
+                            <div class="setting-description">
+                                Save accounts with single Rainbow Rare cards. Keeps accounts that pull any Rainbow card - very rare and valuable pulls.
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">⭐ Double 2★</div>
+                            <div class="setting-description">
+                                Save accounts with Double 2-star cards. Keeps packs with 2 or more 2-star cards. Good middle-ground between god packs and single card saves.
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">👑 Save Crowns</div>
+                            <div class="setting-description">
+                                Save accounts with Crown Rare cards. Keeps accounts that pull Crown cards - extremely rare special cards with unique artwork.
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">✨ Save Shiny</div>
+                            <div class="setting-description">
+                                Save accounts with Shiny cards. Keeps accounts that pull any Shiny variant - special artwork versions of existing cards.
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">🎬 Save Immersives</div>
+                            <div class="setting-description">
+                                Save accounts with Immersive cards. Keeps accounts that pull Immersive art cards - special full-screen artwork cards with animations.
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">🌟 Only Shiny Packs</div>
+                            <div class="setting-description">
+                                Only apply card detection logic to Shiny packs. Regular packs will use standard god pack logic. Useful when hunting specific Shiny cards.
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">❌ Ignore Invalid Packs</div>
+                            <div class="setting-description">
+                                Skip packs that can't be properly scanned due to OCR or detection errors. Helps avoid false positives and improves accuracy.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section" id="save-for-trade">
+                <div class="section-header">
+                    <div class="icon">💎</div>
+                    <h2>Save For Trade (S4T)</h2>
+                </div>
+                <div class="section-content">
+                    <div class="setting-group">
+                        <h3>⚡ S4T Configuration</h3>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">🔄 Enable S4T</div>
+                            <div class="setting-description">
+                                Enable Save For Trade functionality. Automatically saves accounts with tradeable cards and sends notifications when valuable cards are found.
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">🔇 Silent Mode</div>
+                            <div class="setting-description">
+                                Send S4T notifications without Discord pings (@mentions). Reduces Discord spam for frequent saves while still providing notifications.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <h3>💎 Diamond Card Settings</h3>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">💎 3-Diamond Cards</div>
+                            <div class="setting-description">
+                                Save accounts with 3◆ rarity cards. Keeps accounts with 3-Diamond cards, good for trading mid-tier valuable cards.
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">💎 4-Diamond Cards</div>
+                            <div class="setting-description">
+                                Save accounts with 4◆ rarity cards. Keeps accounts with 4-Diamond cards - very valuable for trading and collecting.
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">⭐ 1-Star Cards</div>
+                            <div class="setting-description">
+                                Save accounts with 1★ rarity cards. Keeps accounts with 1-Star cards, useful for completing collections and specific deck builds.
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">🪙 Gholdengo Cards</div>
+                            <div class="setting-description">
+                                Save accounts with Gholdengo cards. Special card from Shining packs. Only visible when Shining packs are selected in Pack Settings.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <h3>🎯 Wonder Pick Settings</h3>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">🎲 Enable Wonder Pick</div>
+                            <div class="setting-description">
+                                Enable Wonder Pick automation. Automatically participates in Wonder Pick events based on your minimum card requirements.
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">🔢 Minimum Cards</div>
+                            <div class="setting-description">
+                                Minimum cards required for Wonder Pick participation. Only participate in Wonder Picks with this many desirable cards. Recommended: 1-3 cards.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <h3>💬 S4T Discord Settings</h3>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">👤 Discord User ID</div>
+                            <div class="setting-description">
+                                Your Discord User ID for S4T notifications. Used to mention you when valuable cards are saved. Find in Discord: User Settings > Advanced > Developer Mode > Copy ID.
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">🔗 S4T Webhook URL</div>
+                            <div class="setting-description">
+                                Discord webhook URL specifically for S4T notifications. Can be separate from main bot notifications. Create in Discord: Server Settings > Integrations > Webhooks.
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">📄 Send Account XML</div>
+                            <div class="setting-description">
+                                Include account XML data in S4T notifications. Allows immediate account access for quick trading and account switching.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section" id="discord-settings">
+                <div class="section-header">
+                    <div class="icon">💬</div>
+                    <h2>Discord Settings</h2>
+                </div>
+                <div class="section-content">
+                    <div class="setting-group">
+                        <h3>🔔 Main Discord Integration</h3>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">👤 Discord User ID</div>
+                            <div class="setting-description">
+                                Your Discord User ID for main notifications. Used for @mentions in bot status messages and god pack alerts. Find in Discord: User Settings > Advanced > Developer Mode > Copy ID.
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">🔗 Main Webhook URL</div>
+                            <div class="setting-description">
+                                Discord webhook URL for main bot notifications. Receives status updates, god pack alerts, and error messages. Create in Discord: Server Settings > Integrations > Webhooks.
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">📄 Send Account XML</div>
+                            <div class="setting-description">
+                                Include account XML data in god pack notifications. Allows immediate account access when god packs are found, enabling quick account switching.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <h3>💓 Heartbeat Monitoring</h3>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">💗 Enable Heartbeat</div>
+                            <div class="setting-description">
+                                Enable periodic status updates to Discord. Sends regular 'alive' messages with statistics to help monitor bot health remotely.
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">🏷️ Heartbeat Name</div>
+                            <div class="setting-description">
+                                Display name for heartbeat messages. Shown in Discord status updates to help identify different bot instances when running multiple setups.
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">🔗 Heartbeat Webhook URL</div>
+                            <div class="setting-description">
+                                Discord webhook URL for heartbeat messages. Can be the same as main webhook or separate. Receives regular status updates based on your delay setting.
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">⏰ Heartbeat Delay</div>
+                            <div class="setting-description">
+                                Minutes between heartbeat messages. How often to send status updates to Discord. Recommended: 15-60 minutes depending on monitoring needs.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section" id="download-settings">
+                <div class="section-header">
+                    <div class="icon">⬇️</div>
+                    <h2>Download Settings</h2>
+                </div>
+                <div class="section-content">
+                    <div class="setting-group">
+                        <h3>🌐 External Data Sources</h3>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">🆔 Main IDs API URL</div>
+                            <div class="setting-description">
+                                API URL for friend ID list (ids.txt). Automatically downloads updated friend ID lists from your specified URL. Leave empty to use local ids.txt file instead.
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">⭐ VIP IDs API URL</div>
+                            <div class="setting-description">
+                                API URL for VIP friend ID list (vip_ids.txt). Separate list for priority friend IDs used for special account management and priority interactions.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <h3>🎪 Showcase Automation</h3>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">✨ Enable Showcase</div>
+                            <div class="setting-description">
+                                Enable showcase automation using showcase_ids.txt. Requires the showcase_ids.txt file in your bot directory for automatic showcase interactions.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="keyboard-shortcuts" id="shortcuts">
+                <h3>⌨️ Keyboard Shortcuts</h3>
+                <div class="shortcut-grid">
+                    <div class="shortcut-category">
+                        <h4>🧭 Section Navigation</h4>
+                        <div class="shortcut-item">
+                            <span>Reroll Settings</span>
+                            <span class="shortcut-key">Ctrl+1</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <span>System Settings</span>
+                            <span class="shortcut-key">Ctrl+2</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <span>Pack Settings</span>
+                            <span class="shortcut-key">Ctrl+3</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <span>Save For Trade</span>
+                            <span class="shortcut-key">Ctrl+4</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <span>Discord Settings</span>
+                            <span class="shortcut-key">Ctrl+5</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <span>Download Settings</span>
+                            <span class="shortcut-key">Ctrl+6</span>
+                        </div>
+                    </div>
+                    
+                    <div class="shortcut-category">
+                        <h4>🚀 Quick Actions</h4>
+                        <div class="shortcut-item">
+                            <span>Launch All MuMu</span>
+                            <span class="shortcut-key">F1</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <span>Arrange Windows</span>
+                            <span class="shortcut-key">F2</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <span>Start Bot</span>
+                            <span class="shortcut-key">F3</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <span>Show Help Menu</span>
+                            <span class="shortcut-key">F4</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <span>Send Offline & Exit</span>
+                            <span class="shortcut-key">Shift+F7</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>💡 Pro Tips & Best Practices</h3>
+                <div class="steps-grid">
+                    <div class="step">
+                        <div class="step-number">💾</div>
+                        <strong>Auto-Save</strong>
+                        <p>All settings automatically save when changed - no need to manually save</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">🖱️</div>
+                        <strong>Hover Help</strong>
+                        <p>Hover over any control for detailed tooltips and explanations</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">🎨</div>
+                        <strong>Themes</strong>
+                        <p>Switch between Dark/Light themes for comfortable extended use</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">⌨️</div>
+                        <strong>Shortcuts</strong>
+                        <p>Use keyboard shortcuts for lightning-fast navigation</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">🔄</div>
+                        <strong>Method Choice</strong>
+                        <p>Start with 13 Pack method, advance to Inject when comfortable</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">📊</div>
+                        <strong>Monitor Setup</strong>
+                        <p>Use multiple monitors for better instance management</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">💬</div>
+                        <strong>Discord Integration</strong>
+                        <p>Set up webhooks for remote monitoring and notifications</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">🎯</div>
+                        <strong>Start Small</strong>
+                        <p>Begin with 1-3 instances, scale up as you learn the system</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-header">
+                    <div class="icon">🚨</div>
+                    <h2>Important Notes & Warnings</h2>
+                </div>
+                <div class="section-content">
+                    <div class="setting-group">
+                        <h3>⚠️ Critical Requirements</h3>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">🔒 Administrator Rights</div>
+                            <div class="setting-description">
+                                The bot must be run as Administrator. It will automatically request elevation on startup. This is required for proper MuMu instance control and file system access.
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">📁 Path Requirements</div>
+                            <div class="setting-description">
+                                Bot folder path must be under 200 characters and contain no spaces. Move to a shorter path like <code>C:\PTCGPB\</code> if experiencing issues.
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">🎮 MuMu Configuration</div>
+                            <div class="setting-description">
+                                Your MuMu Player scaling must match the bot's Scale setting exactly. Mismatched scaling will cause detection failures and clicking errors.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <h3>🛡️ Safety & Legal</h3>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">📜 License Compliance</div>
+                            <div class="setting-description">
+                                This bot is licensed under CC BY-NC 4.0. <strong>Commercial use is prohibited.</strong> Do not use for paid services, donations, or any commercial activity.
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">⚖️ Terms of Service</div>
+                            <div class="setting-description">
+                                Use at your own risk. Automated gameplay may violate Pokemon TCG Pocket's Terms of Service. The developers are not responsible for account actions.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <h3>🔧 Troubleshooting</h3>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">🐛 Common Issues</div>
+                            <div class="setting-description">
+                                <ul>
+                                    <li><strong>Detection failures:</strong> Check OCR language matches game language</li>
+                                    <li><strong>Clicking errors:</strong> Verify MuMu scaling matches bot scale setting</li>
+                                    <li><strong>Launch failures:</strong> Confirm MuMu folder path is correct</li>
+                                    <li><strong>Slow performance:</strong> Reduce instances or increase delays</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">📝 Debug Mode</div>
+                            <div class="setting-description">
+                                Enable Debug Mode in System Settings for detailed logging when troubleshooting issues. Share debug logs when seeking support.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-header">
+                    <div class="icon">🎓</div>
+                    <h2>Getting Started Tutorial</h2>
+                </div>
+                <div class="section-content">
+                    <div class="setting-group">
+                        <h3>🏁 First Time Setup</h3>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">Step 1: Basic Configuration</div>
+                            <div class="setting-description">
+                                <ol>
+                                    <li>Navigate to <strong>Reroll Settings</strong> (Ctrl+1)</li>
+                                    <li>Enter your Friend ID (optional if using API)</li>
+                                    <li>Set Instances to 1 for testing</li>
+                                    <li>Configure Account Name for identification</li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">Step 2: System Setup</div>
+                            <div class="setting-description">
+                                <ol>
+                                    <li>Go to <strong>System Settings</strong> (Ctrl+2)</li>
+                                    <li>Select your primary monitor</li>
+                                    <li>Set Scale to match your MuMu settings (usually Scale125)</li>
+                                    <li>Verify MuMu folder path</li>
+                                    <li>Set OCR and Client languages to match your game</li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">Step 3: Pack Configuration</div>
+                            <div class="setting-description">
+                                <ol>
+                                    <li>Access <strong>Pack Settings</strong> (Ctrl+3)</li>
+                                    <li>Start with "13 Pack" method for beginners</li>
+                                    <li>Set minimum 2★ cards (try 2-3 for testing)</li>
+                                    <li>Select 1-2 pack types to focus on</li>
+                                    <li>Enable basic card detection if desired</li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">Step 4: First Run</div>
+                            <div class="setting-description">
+                                <ol>
+                                    <li>Click <strong>Launch All MuMu</strong> (F1) to start your instance</li>
+                                    <li>Click <strong>Arrange Windows</strong> (F2) to position properly</li>
+                                    <li>Click <strong>Start Bot</strong> (F3) and confirm settings</li>
+                                    <li>Monitor the first few rerolls to ensure proper operation</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <h3>📈 Scaling Up</h3>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">Adding More Instances</div>
+                            <div class="setting-description">
+                                Once comfortable with single instance operation:
+                                <ol>
+                                    <li>Gradually increase instance count (2, 3, 5, etc.)</li>
+                                    <li>Adjust Row Gap for better window spacing</li>
+                                    <li>Consider increasing delays if stability issues occur</li>
+                                    <li>Monitor system performance and adjust accordingly</li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-name">Advanced Features</div>
+                            <div class="setting-description">
+                                After mastering basics, explore:
+                                <ul>
+                                    <li><strong>Inject Methods:</strong> More efficient account management</li>
+                                    <li><strong>Save For Trade:</strong> Automatic valuable card detection</li>
+                                    <li><strong>Discord Integration:</strong> Remote monitoring and notifications</li>
+                                    <li><strong>Multiple Pack Types:</strong> Diversified rerolling strategy</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <div class="footer-content">
+                <h3>🤝 Community & Support</h3>
+                <p>Join our community for support, updates, and collaboration!</p>
+                <div class="footer-links">
+                    <a href="https://discord.gg/C9Nyf7P4sT" class="footer-link">
+                        💬 Discord Server
+                    </a>
+                    <a href="https://github.com/Arturo-1212/PTCGPB" class="footer-link">
+                        📚 GitHub Repository
+                    </a>
+                    <a href="https://buymeacoffee.com/aarturoo" class="footer-link">
+                        ☕ Support Development
+                    </a>
+                </div>
+                <p style="margin-top: 2rem; font-size: 0.875rem; opacity: 0.8;">
+                    Licensed under CC BY-NC 4.0 International License<br>
+                    Non-commercial use only • Created by Arturo • Version 6.4.5 Beta
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add print functionality
+        function printDocument() {
+            window.print();
+        }
+
+        // Add keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            // Ctrl+P for print
+            if (e.ctrlKey && e.key === 'p') {
+                e.preventDefault();
+                printDocument();
+            }
+        });
+
+        // Add scroll-to-top functionality
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                if (!document.querySelector('.scroll-top')) {
+                    const scrollButton = document.createElement('button');
+                    scrollButton.innerHTML = '↑';
+                    scrollButton.className = 'scroll-top';
+                    scrollButton.style.cssText = `
+                        position: fixed;
+                        bottom: 2rem;
+                        right: 2rem;
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 50%;
+                        background: #4299e1;
+                        color: white;
+                        border: none;
+                        font-size: 1.5rem;
+                        cursor: pointer;
+                        box-shadow: 0 4px 12px rgba(66, 153, 225, 0.4);
+                        transition: all 0.3s ease;
+                        z-index: 1000;
+                    `;
+                    scrollButton.onmouseover = () => scrollButton.style.transform = 'scale(1.1)';
+                    scrollButton.onmouseout = () => scrollButton.style.transform = 'scale(1)';
+                    scrollButton.onclick = () => window.scrollTo({top: 0, behavior: 'smooth'});
+                    document.body.appendChild(scrollButton);
+                }
+            } else {
+                
